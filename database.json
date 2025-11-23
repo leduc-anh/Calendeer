@@ -119,36 +119,6 @@
       "note": "Khong co note gi ca\n",
       "startTime": "2025-11-22T09:00",
       "endTime": "2025-11-25T09:21"
-    },
-    {
-      "id": "073d",
-      "name": "New task",
-      "status": "Review",
-      "priority": "Medium",
-      "description": "",
-      "note": "",
-      "startTime": "2025-11-21T09:46:10.799Z",
-      "endTime": "2025-11-21T09:46:10.799Z"
-    },
-    {
-      "id": "edcb",
-      "name": "New task",
-      "status": "Todo",
-      "priority": "Medium",
-      "description": "",
-      "note": "",
-      "startTime": "2025-11-21T09:49:30.882Z",
-      "endTime": "2025-11-21T09:49:30.882Z"
-    },
-    {
-      "id": "f983",
-      "name": "New task",
-      "status": "InProgress",
-      "priority": "Medium",
-      "description": "",
-      "note": "",
-      "startTime": "2025-11-21T10:22:53.419Z",
-      "endTime": "2025-11-21T10:22:53.419Z"
     }
   ]
 }
