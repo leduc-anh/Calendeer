@@ -3,7 +3,6 @@ import {
   Star,
   GripVertical,
   Calendar as CalendarIcon,
-  AlertCircle,
 } from "lucide-react";
 
 const statusClassNames = {
@@ -20,12 +19,7 @@ const statusClassNames = {
  * @param {Object} props.listeners
  * @param {Function} props.onClick
  */
-export function TaskCard({
-  task,
-  isDragging,
-  listeners,
-  onClick,
-}) {
+export function TaskCard({ task, isDragging, listeners, onClick }) {
   const statusInfo = statusClassNames[task.status] || statusClassNames.Todo;
 
   const formattedDate = task.endTime
@@ -35,13 +29,6 @@ export function TaskCard({
         month: "short",
       })
     : null;
-  
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-
-  const due = new Date(task.endTime);
-  due.setHours(0, 0, 0, 0);
-  const isOverdue = due < today && task.status !== "Done";
 
   return (
     <div
@@ -60,13 +47,7 @@ export function TaskCard({
     >
       <div className="grow">
         <div className="flex justify-between items-center mb-1">
-          <span
-            className={`font-semibold text-sm ${
-              isOverdue
-                ? "text-red-600 dark:text-red-400"
-                : "text-slate-800 dark:text-slate-100"
-            }`}
-          >
+          <span className="font-semibold text-sm text-slate-800 dark:text-slate-100">
             {task.name}
           </span>
           <span
@@ -77,16 +58,9 @@ export function TaskCard({
         </div>
 
         {formattedDate && (
-          <div
-            className={`flex items-center text-xs mb-1 gap-1 ${
-              isOverdue
-                ? "text-red-600 dark:text-red-400"
-                : "text-slate-500 dark:text-slate-400"
-            }`}
-          >
+          <div className="flex items-center text-xs mb-1 gap-1 text-slate-500 dark:text-slate-400">
             <CalendarIcon size={12} />
             {formattedDate}
-            {isOverdue && <AlertCircle size={12} className="ml-1" />}
           </div>
         )}
 

@@ -14,12 +14,17 @@ import {
   verticalListSortingStrategy,
   arrayMove,
 } from "@dnd-kit/sortable";
-import {toast} from "react-toastify";
+import { toast } from "react-toastify";
 import { TaskCard } from "./TaskCard";
 import { SortableItem } from "./SortableItem";
 import { ColumnDropArea } from "./ColumnDropArea";
 import { Plus } from "lucide-react";
-import { updateTask, createTask, setTasks } from "../../features/taskSlice";
+import {
+  updateTask,
+  createTask,
+  setTasks,
+  fetchTaskbyId,
+} from "../../features/taskSlice";
 
 const statusColumns = ["Todo", "InProgress", "Review", "Done"];
 
@@ -107,6 +112,10 @@ export default function KanbanBoard() {
     toast.success("Task added!");
   };
 
+  const handleTaskClick = (taskId) => {
+    dispatch(fetchTaskbyId(taskId));
+  };
+
   return (
     <DndContext
       sensors={sensors}
@@ -142,8 +151,7 @@ export default function KanbanBoard() {
                     <SortableItem key={task.id} id={`${status}:${task.id}`}>
                       <TaskCard
                         task={task}
-                        onClick={(e) => {
-                        }}
+                        onClick={() => handleTaskClick(task.id)}
                       />
                     </SortableItem>
                   ))}
