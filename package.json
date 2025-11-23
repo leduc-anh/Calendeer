@@ -1,0 +1,56 @@
+{
+  "name": "m",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@dnd-kit/sortable": "^10.0.0",
+    "@reduxjs/toolkit": "^2.10.1",
+    "@tailwindcss/vite": "^4.1.17",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.13.2",
+    "date-fns": "^4.1.0",
+    "framer-motion": "^12.23.24",
+    "localforage": "^1.10.0",
+    "lucide-react": "^0.554.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.6.0",
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^7.9.6",
+    "react-scripts": "5.0.1",
+    "react-toastify": "^11.0.5",
+    "recharts": "^3.4.1",
+    "tailwindcss": "^4.1.17",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.1",
+    "vite": "^7.2.2"
+  }
+}
