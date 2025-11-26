@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import _ from "lodash";
 import { updateTask, createTask } from "../features/taskSlice";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -8,30 +9,61 @@ import "react-quill/dist/quill.snow.css";
 const STATUS_OPTIONS = ["Todo", "InProgress", "Review", "Done"];
 const PRIORITY_OPTIONS = ["Low", "Medium", "High"];
 
+const formatDateTimeLocal = (isoString) => {
+  if (!isoString) return "";
+  try {
+    const date = new Date(isoString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    return `${year}-${month}-${day}T${hours}:${minutes}`;
+  } catch (e) {
+    return "";
+  }
+};
+
 export default function TaskCreateEditModal({
   task,
   isOpen,
   onClose,
   isCreateMode = false,
+  initialDate
 }) {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState(task || {});
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     if (isCreateMode) {
+      let defaultStartTime = "";
+      let defaultEndTime = "";
+      
+      if (initialDate) {
+        defaultStartTime = formatDateTimeLocal(initialDate.toISOString());
+        
+        const endDate = new Date(initialDate);
+        endDate.setHours(endDate.getHours() + 1);
+        defaultEndTime = formatDateTimeLocal(endDate.toISOString());
+      }
+      
       setFormData({
         name: "",
         description: "",
         status: "Todo",
         priority: "Medium",
-        startTime: "",
-        endTime: "",
+        startTime: defaultStartTime,
+        endTime: defaultEndTime,
         note: "",
       });
     } else if (task) {
-      setFormData(task);
+      setFormData({
+        ...task,
+        startTime: formatDateTimeLocal(task.startTime),
+        endTime: formatDateTimeLocal(task.endTime),
+      });
     }
-  }, [task, isOpen, isCreateMode]);
+  }, [task, isOpen, isCreateMode, initialDate]);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     let updated = { ...formData, [name]: value };
@@ -46,7 +78,7 @@ export default function TaskCreateEditModal({
 
   const handleSave = async () => {
     setLoading(true);
-    if (!formData.name || formData.name.trim() === "") {
+    if (_.isEmpty(_.trim(formData.name))) {
       toast.error("Task Name is required.");
       setLoading(false);
       return;
@@ -197,7 +229,7 @@ export default function TaskCreateEditModal({
                   onChange={handleInputChange}
                   className="w-full px-3 py-2.5 text-sm bg-white dark:bg-gray-700/50 text-gray-900 dark:text-white rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
                 >
-                  {STATUS_OPTIONS.map((opt) => (
+                  {_.map(STATUS_OPTIONS, (opt) => (
                     <option key={opt} value={opt}>
                       {opt}
                     </option>
@@ -215,7 +247,7 @@ export default function TaskCreateEditModal({
                   onChange={handleInputChange}
                   className="w-full px-3 py-2.5 text-sm bg-white dark:bg-gray-700/50 text-gray-900 dark:text-white rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
                 >
-                  {PRIORITY_OPTIONS.map((opt) => (
+                  {_.map(PRIORITY_OPTIONS, (opt) => (
                     <option key={opt} value={opt}>
                       {opt}
                     </option>

@@ -1,164 +1,84 @@
 {
   "tasks": [
     {
-      "id": "1",
-      "name": "Thiết kế UI2",
+      "id": "3e60",
+      "name": "Giới thiệu Ruby và Cài đặt môi trường phát triển",
+      "description": "Tìm hiểu về ngôn ngữ Ruby, lịch sử phát triển và triết lý thiết kế của nó. Thực hiện cài đặt Ruby, RubyGems và một môi trường phát triển tích hợp (IDE) như VS Code. Viết và chạy chương trình 'Hello World' đầu tiên để làm quen.",
+      "status": "Todo",
       "priority": "High",
+      "startTime": "2025-11-26T10:47:07.783Z",
+      "endTime": "2025-11-26T12:47:07.783Z",
+      "note": "Links: https://www.ruby-lang.org/en/documentation/installation/, https://www.codecademy.com/learn/learn-ruby/modules/learn-ruby-introduction-to-ruby/cheatsheet"
+    },
+    {
+      "id": "d615",
+      "name": "Nắm vững cú pháp cơ bản và các kiểu dữ liệu",
+      "description": "Học về các yếu tố cú pháp cơ bản của Ruby: biến, hằng số, toán tử. Khám phá các kiểu dữ liệu chính bao gồm số (Integer, Float), chuỗi (String), boolean (true, false), mảng (Array) và hash (Hash). Thực hành các thao tác cơ bản với từng kiểu dữ liệu.",
       "status": "Todo",
-      "description": "Thiết kế màn hình đăng nhập",
-      "note": "Cần feedback từ team",
-      "startTime": "2025-11-19T08:00",
-      "endTime": "2025-11-19T12:00"
-    },
-    {
-      "id": "2",
-      "name": "Tạo API đăng nhập",
-      "priority": "Medium",
-      "status": "Review",
-      "description": "Tạo endpoint login",
-      "note": "Khong co note gi ca\n",
-      "startTime": "2025-11-20T09:00",
-      "endTime": "2025-11-21T09:21"
-    },
-    {
-      "id": "3",
-      "name": "Choi game",
       "priority": "High",
-      "status": "InProgress",
-      "description": "Tạo endpoint loginasdasdadaaaaaaaaaaaTạo endpoint loginasdasdadaaaaaaaaaaaTạo endpoint loginasdasdadaaaaaaaaaaaTạo endpoint loginasdasdadaaaaaaaaaaaTạo endpoint loginasdasdadaaaaaaaaaaaTạo endpoint loginasdasdadaaaaaaaaaaaTạo endpoint loginasdasdadaaaaaaaaaaaTạo endpoint loginasdasdadaaaaaaaaaaaTạo endpoint loginasdasdadaaaaaaaaaaaTạo endpoint loginasdasdadaaaaaaaaaaa",
-      "note": "Khong co note gi ca\n",
-      "startTime": "2025-11-20T09:00",
-      "endTime": "2025-11-21T09:21"
+      "startTime": "2025-11-26T12:47:07.783Z",
+      "endTime": "2025-11-26T15:47:07.783Z",
+      "note": "Links: https://www.codecademy.com/learn/learn-ruby/modules/learn-ruby-data-types-variables-and-control-flow/cheatsheet, https://ruby-doc.org/core-3.1.2/doc/syntax_rdoc.html"
     },
     {
-      "id": "4",
-      "name": "Hoc bai",
-      "priority": "Medium",
+      "id": "74b8",
+      "name": "Học cấu trúc điều khiển và viết hàm (phương thức) trong Ruby",
+      "description": "Tìm hiểu cách sử dụng các cấu trúc điều khiển luồng chương trình như câu lệnh điều kiện `if/elsif/else`, `case` và các loại vòng lặp như `while`, `until`, `for`, `each`. Nắm vững cách định nghĩa và gọi các phương thức (hàm), truyền đối số và trả về giá trị.",
       "status": "Todo",
-      "description": "Tạo endpoint login",
-      "note": "Khong co note gi ca\n",
-      "startTime": "2025-11-20T09:00",
-      "endTime": "2025-11-21T09:21"
+      "priority": "High",
+      "startTime": "2025-11-27T01:00:00.000Z",
+      "endTime": "2025-11-27T04:30:00.000Z",
+      "note": "Links: https://www.tutorialspoint.com/ruby/ruby_loops.htm, https://www.codecademy.com/learn/learn-ruby/modules/learn-ruby-methods-blocks-and-sorting/cheatsheet"
     },
     {
-      "id": "5",
-      "name": "Hoc bai",
-      "priority": "Medium",
-      "status": "Review",
-      "description": "Tạo endpoint login",
-      "note": "Khong co note gi ca\n",
-      "startTime": "2025-11-20T09:00",
-      "endTime": "2025-11-21T09:21"
-    },
-    {
-      "id": "6",
-      "name": "Hoc bai",
-      "priority": "Medium",
-      "status": "InProgress",
-      "description": "Tạo endpoint login",
-      "note": "Khong co note gi ca\n",
-      "startTime": "2025-11-20T09:00",
-      "endTime": "2025-11-21T09:21"
-    },
-    {
-      "id": "7",
-      "name": "Hoc bai",
-      "priority": "Medium",
-      "status": "InProgress",
-      "description": "Tạo endpoint login",
-      "note": "Khong co note gi ca\n",
-      "startTime": "2025-11-20T09:00",
-      "endTime": "2025-11-21T09:21"
-    },
-    {
-      "id": "8",
-      "name": "Hoc bai",
-      "priority": "Medium",
-      "status": "Todo",
-      "description": "Tạo endpoint login",
-      "note": "Khong co note gi ca\n",
-      "startTime": "2025-11-21T09:00",
-      "endTime": "2025-11-21T09:21"
-    },
-    {
-      "id": "9",
-      "name": "Hoc bai",
-      "priority": "Medium",
-      "status": "Done",
-      "description": "Tạo endpoint login",
-      "note": "Khong co note gi ca\n",
-      "startTime": "2025-12-20T09:00",
-      "endTime": "2025-12-21T09:21"
-    },
-    {
-      "id": "11",
-      "name": "Hoc bai",
-      "priority": "Medium",
-      "status": "Done",
-      "description": "Tạo endpoint login",
-      "note": "Khong co note gi ca\n",
-      "startTime": "2025-11-24T09:00",
-      "endTime": "2025-11-24T09:21"
-    },
-    {
-      "id": "12",
-      "name": "Hoc bai",
-      "priority": "Medium",
-      "status": "Todo",
-      "description": "Tạo endpoint login",
-      "note": "Khong co note gi ca\n",
-      "startTime": "2025-11-22T09:00",
-      "endTime": "2025-11-25T09:21"
-    },
-    {
-      "id": "1ec6",
-      "name": "New task",
+      "id": "ebd6",
+      "name": "Hiểu và áp dụng Lập trình hướng đối tượng (OOP) với Class và Object",
+      "description": "Giới thiệu các khái niệm cốt lõi của Lập trình hướng đối tượng (OOP) trong Ruby: Class, Object, thuộc tính (attributes) và phương thức (methods). Học cách tạo class, khởi tạo object, sử dụng phương thức khởi tạo `initialize` và `attr_accessor` để quản lý thuộc tính.",
       "status": "Todo",
       "priority": "Medium",
-      "description": "",
-      "note": "",
-      "startTime": "2025-11-23T17:03:41.874Z",
-      "endTime": "2025-11-23T17:03:41.874Z"
+      "startTime": "2025-11-28T01:00:00.000Z",
+      "endTime": "2025-11-28T05:00:00.000Z",
+      "note": "Links: https://www.ruby-lang.org/en/documentation/quickstart/, https://www.tutorialspoint.com/ruby/ruby_classes_objects.htm"
     },
     {
-      "id": "701e",
-      "name": "New task",
+      "id": "9a00",
+      "name": "Kế thừa, Module và Mixins trong OOP Ruby",
+      "description": "Tìm hiểu các khái niệm OOP nâng cao: kế thừa (`<`) để tạo class con, sử dụng `super` và đa hình. Khám phá cách sử dụng Module để tổ chức mã và Mixins với `include`, `extend` để chia sẻ chức năng giữa các class mà không dùng kế thừa trực tiếp.",
       "status": "Todo",
       "priority": "Medium",
-      "description": "",
-      "note": "",
-      "startTime": "2025-11-23T17:03:42.542Z",
-      "endTime": "2025-11-23T17:03:42.542Z"
+      "startTime": "2025-11-29T01:00:00.000Z",
+      "endTime": "2025-11-29T05:30:00.000Z",
+      "note": "Links: https://www.codecademy.com/learn/learn-ruby/modules/learn-ruby-inheritance-and-modules/cheatsheet, https://ruby-doc.org/core-3.1.2/doc/syntax_rdoc.html#class-Module"
     },
     {
-      "id": "33c6",
-      "name": "New task",
+      "id": "88b3",
+      "name": "Xử lý File và Quản lý ngoại lệ (Exceptions)",
+      "description": "Học cách đọc và ghi dữ liệu từ các tệp tin (files) trong Ruby, cũng như cách thao tác với các thư mục. Nắm vững cơ chế bắt và xử lý ngoại lệ (`begin`, `rescue`, `ensure`, `raise`) để làm cho chương trình của bạn mạnh mẽ và ổn định hơn trước các lỗi không mong muốn.",
       "status": "Todo",
-      "priority": "Medium",
-      "description": "",
-      "note": "",
-      "startTime": "2025-11-23T17:03:43.142Z",
-      "endTime": "2025-11-23T17:03:43.142Z"
+      "priority": "Low",
+      "startTime": "2025-11-30T01:00:00.000Z",
+      "endTime": "2025-11-30T04:00:00.000Z",
+      "note": "Links: https://www.tutorialspoint.com/ruby/ruby_io.htm, https://www.tutorialspoint.com/ruby/ruby_exceptions.htm"
     },
     {
-      "id": "8e97",
-      "name": "New task",
+      "id": "c030",
+      "name": "Xây dựng một ứng dụng Console đơn giản với Ruby",
+      "description": "Áp dụng tất cả các kiến thức đã học về cú pháp, lập trình hướng đối tượng và xử lý file để xây dựng một ứng dụng chạy trên console. Ví dụ, bạn có thể tạo một ứng dụng quản lý danh sách sách, danh sách việc cần làm (Todo List) hoặc một trò chơi nhỏ có tương tác qua console.",
       "status": "Todo",
-      "priority": "Medium",
-      "description": "",
-      "note": "",
-      "startTime": "2025-11-23T17:03:44.102Z",
-      "endTime": "2025-11-23T17:03:44.103Z"
+      "priority": "High",
+      "startTime": "2025-12-01T01:00:00.000Z",
+      "endTime": "2025-12-01T07:00:00.000Z",
+      "note": "Links: https://www.youtube.com/watch?v=fJ6Y1tXJ4Xo (ví dụ về building console apps), https://ruby-doc.org/stdlib-3.1.2/libdoc/io/rdoc/IO.html"
     },
     {
-      "id": "20b5",
-      "name": "New task",
+      "id": "f174",
+      "name": "Giới thiệu cơ bản về Ruby on Rails (Framework Phát triển Web)",
+      "description": "Nếu bạn có hứng thú với phát triển ứng dụng web, hãy dành thời gian tìm hiểu về Ruby on Rails - một framework web nổi tiếng của Ruby. Nắm các khái niệm cốt lõi như kiến trúc MVC (Model-View-Controller), ActiveRecord để tương tác cơ sở dữ liệu và hệ thống Routing. Thực hiện cài đặt Rails và tạo một ứng dụng web 'Hello World' cơ bản.",
       "status": "Todo",
-      "priority": "Medium",
-      "description": "",
-      "note": "",
-      "startTime": "2025-11-23T17:03:45.814Z",
-      "endTime": "2025-11-23T17:03:45.814Z"
+      "priority": "Low",
+      "startTime": "2025-12-02T01:00:00.000Z",
+      "endTime": "2025-12-02T06:00:00.000Z",
+      "note": "Links: https://rubyonrails.org/, https://guides.rubyonrails.org/getting_started.html"
     }
   ]
 }

@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import taskAPI from "../lib/taskAPI";
+import _ from "lodash";
 
 export const fetchTasks = createAsyncThunk(
   "tasks/fetchTasks",
@@ -84,9 +85,8 @@ const taskSlice = createSlice({
       })
       .addCase(updateTask.fulfilled, (state, action) => {
         state.loading = false;
-        const index = state.items.findIndex(task => task.id === action.payload.id);
+        const index = _.findIndex(state.items, task => task.id === action.payload.id);
         if (index !== -1) {
-          // Merge response với data cũ để đảm bảo không mất field
           state.items[index] = {
             ...state.items[index],
             ...action.payload
@@ -133,8 +133,8 @@ const taskSlice = createSlice({
       })
       .addCase(deleteTask.fulfilled, (state, action) => {
         state.loading = false;
-        const deletedTask = state.items.find(task => task.id === action.payload);
-        state.items = state.items.filter(task => task.id !== action.payload);
+        const deletedTask = _.find(state.items, task => task.id === action.payload);
+        state.items = _.filter(state.items, task => task.id !== action.payload);
         state.taskList = state.items;
         if (deletedTask) {
           state.activities.unshift({

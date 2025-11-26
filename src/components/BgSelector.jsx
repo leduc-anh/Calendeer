@@ -3,6 +3,7 @@ import { Loader2, Trash2, Upload, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import localforage from "localforage";
 import { toast } from "react-toastify";
+import _ from "lodash";
 
 export default function BgSelector({
   onSelect,
@@ -37,7 +38,7 @@ export default function BgSelector({
   };
 
   const handleSearch = async () => {
-    if (!keyword.trim()) return;
+    if (_.isEmpty(_.trim(keyword))) return;
     setPage(1);
     fetchImages(1, keyword);
     await localforage.setItem("bgKeyword", keyword);
@@ -108,7 +109,7 @@ export default function BgSelector({
   };
 
   const handleDeleteCustomBg = async (url) => {
-    const updated = customBgs.filter((bg) => bg !== url);
+    const updated = _.filter(customBgs, (bg) => bg !== url);
     setCustomBgs(updated);
     await localforage.setItem("customBgs", updated);
     if (updated.length === 0) {
@@ -169,13 +170,13 @@ export default function BgSelector({
       </div>
 
       <div className="overflow-y-auto">
-        {customBgs.length > 0 && (
+        {_.size(customBgs) > 0 && (
           <div className="mb-6">
             <h3 className="text-sm font-semibold mb-3 dark:text-gray-300 text-gray-700">
               Your Backgrounds
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {customBgs.map((bg, i) => (
+              {_.map(customBgs, (bg, i) => (
                 <div
                   key={i}
                   className="relative w-full h-32 group cursor-pointer rounded-lg overflow-hidden"
@@ -220,7 +221,7 @@ export default function BgSelector({
         )}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           <AnimatePresence>
-            {images.map((img) => (
+            {_.map(images, (img) => (
               <motion.div
                 key={img.id}
                 layout
@@ -243,7 +244,7 @@ export default function BgSelector({
             ))}
           </AnimatePresence>
         </div>
-        {images.length > 0 && !loading && (
+        {!_.isEmpty(images) && !loading && (
           <div className="flex justify-center mt-4">
             <button
               onClick={handleNext}

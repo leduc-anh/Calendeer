@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useMemo } from "react";
 import { fetchTasks } from "../features/taskSlice";
+import _ from "lodash";
 import {
   BarChart,
   Bar,
@@ -91,14 +92,14 @@ export default function DashBoard() {
     const priorityCounts = { Low: 0, Medium: 0, High: 0 };
     let dueSoonCount = 0;
 
-    tasks?.forEach((task) => {
+    _.forEach(tasks, (task) => {
       const status = task.status || "";
       const priority = task.priority || "";
       
-      if (statusCounts.hasOwnProperty(status)) {
+      if (_.has(statusCounts, status)) {
         statusCounts[status]++;
       }
-      if (priorityCounts.hasOwnProperty(priority)) {
+      if (_.has(priorityCounts, priority)) {
         priorityCounts[priority]++;
       }
       
@@ -126,8 +127,8 @@ export default function DashBoard() {
     ];
 
     return {
-      totalTasks: tasks?.length || 0,
-      completedCount: statusCounts.Done,
+      totalTasks: _.size(tasks) || 0,
+      completedCount: _.get(statusCounts, 'Done', 0),
       dueSoonCount,
       pieData,
       barData,
@@ -153,7 +154,7 @@ export default function DashBoard() {
         <StatCard
           title="To Do"
           value={
-            summaryData.pieData.find((d) => d.name === "To Do")?.value || 0
+            _.get(_.find(summaryData.pieData, (d) => d.name === "To Do"), 'value', 0)
           }
           icon={<PlusSquare size={24} />}
           color="bg-pink-500/50 text-pink-500"
@@ -183,7 +184,7 @@ export default function DashBoard() {
                 outerRadius={80}
                 paddingAngle={5}
               >
-                {summaryData.pieData.map((entry, index) => (
+                {_.map(summaryData.pieData, (entry, index) => (
                   <Cell key={`cell-${index}`} fill={entry.fill} />
                 ))}
               </Pie>
@@ -216,7 +217,7 @@ export default function DashBoard() {
             Recent Activity
           </h3>
           <div className="space-y-4 max-h-[250px] overflow-y-auto">
-            {activities.map((activity) => (
+            {_.map(activities, (activity) => (
               <div key={activity.id} className="flex items-start gap-3">
                 <div className="mt-1">
                   <ActivityIcon type={activity.type} />
@@ -239,7 +240,7 @@ export default function DashBoard() {
                 </div>
               </div>
             ))}
-            {activities.length === 0 && (
+            {_.isEmpty(activities) && (
               <p className="text-sm text-center text-gray-400 py-8">
                 No recent activity.
               </p>

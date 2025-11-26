@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchTasks } from "../features/taskSlice";
+import _ from "lodash";
 import CalendarHeader from "../components/Calendar/CalendarHeader";
 import CalendarGrid from "../components/Calendar/CalendarGrid";
 import CalendarSidebar from "../components/Calendar/CalendarSidebar";
@@ -13,6 +14,7 @@ const CalendarPage = () => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
+  const [slideDirection, setSlideDirection] = useState('none');
   const [taskListModal, setTaskListModal] = useState({
     isOpen: false,
     date: null,
@@ -30,7 +32,7 @@ const CalendarPage = () => {
   }, [dispatch]);
 
   // Convert tasks to calendar events
-  const events = tasks.map((task) => {
+  const events = _.map(tasks, (task) => {
     // Determine color based on status
     let color = "blue";
     switch (task.status) {
@@ -65,19 +67,37 @@ const CalendarPage = () => {
   });
 
   const handlePrevMonth = () => {
-    setCurrentDate(
-      new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1)
-    );
+    setSlideDirection('right');
+    setTimeout(() => {
+      setCurrentDate(
+        new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1)
+      );
+      setSlideDirection('none');
+    }, 0);
   };
 
   const handleNextMonth = () => {
-    setCurrentDate(
-      new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1)
-    );
+    setSlideDirection('left');
+    setTimeout(() => {
+      setCurrentDate(
+        new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1)
+      );
+      setSlideDirection('none');
+    }, 0);
   };
 
   const handleToday = () => {
+    setSlideDirection('none');
     setCurrentDate(new Date());
+  };
+
+  const handleDateChange = (newDate) => {
+    const isNext = newDate > currentDate;
+    setSlideDirection(isNext ? 'left' : 'right');
+    setTimeout(() => {
+      setCurrentDate(newDate);
+      setSlideDirection('none');
+    }, 0);
   };
 
   const handleCreateTask = (date) => {
@@ -99,28 +119,41 @@ const CalendarPage = () => {
   };
 
   return (
-    <div className=" bg-[#F5F3EF] dark:bg-gray-900 p-6">
-      <div className="max-w-[1800px] mx-auto">
+    <div >
+      <div className="max-w-[1800px]  mx-auto">
         {loading ? (
           <div className="flex justify-center items-center h-96">
             <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
           </div>
         ) : (
           <div className="flex gap-6">
-            {/* Main Calendar Area */}
             <div className="flex-1">
               <CalendarHeader
                 currentDate={currentDate}
                 onPrevMonth={handlePrevMonth}
                 onNextMonth={handleNextMonth}
                 onToday={handleToday}
+                onDateChange={handleDateChange}
               />
-              <CalendarGrid
-                currentDate={currentDate}
-                events={events}
-                onCreateTask={handleCreateTask}
-                onShowTasks={handleShowTasks}
-              />
+              <div className="relative overflow-hidden">
+                <div
+                  key={`${currentDate.getMonth()}-${currentDate.getFullYear()}`}
+                  className={`transition-all duration-500 ease-out ${
+                    slideDirection === 'left'
+                      ? 'animate-slideOutLeft'
+                      : slideDirection === 'right'
+                      ? 'animate-slideOutRight'
+                      : 'animate-slideIn'
+                  }`}
+                >
+                  <CalendarGrid
+                    currentDate={currentDate}
+                    events={events}
+                    onCreateTask={handleCreateTask}
+                    onShowTasks={handleShowTasks}
+                  />
+                </div>
+              </div>
             </div>
 
             {/* Sidebar */}

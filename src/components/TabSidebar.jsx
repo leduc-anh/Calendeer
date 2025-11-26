@@ -1,18 +1,20 @@
 import React from "react";
-import { ListChecks, CircleGauge, Kanban, Calendar } from "lucide-react";
+import { ListChecks, CircleGauge, Kanban, Calendar, CalendarRange } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import _ from "lodash";
 export const Icons = {
-  "list-checks": ListChecks,
+  list_checks: ListChecks,
   summary: CircleGauge,
   kanban: Kanban,
   calendar: Calendar,
+  calendar_range: CalendarRange
 };
 
 export default function TabSidebar({ TabItems, isCollapsed }) {
   const { pathname } = useLocation();
   return (
     <div className="mt-4 space-y-2">
-      {TabItems.map((item, index) => {
+      {_.map(TabItems, (item, index) => {
         const IconComponent = Icons[item.icon];
         const isActive = pathname === `/${item.link}`;
         return (
@@ -20,12 +22,12 @@ export default function TabSidebar({ TabItems, isCollapsed }) {
             to={`/${item.link}`}
             key={index}
             className={`flex items-center gap-3 p-2 rounded-lg cursor-pointer
-                       hover:bg-amber-200/40 dark:hover:bg-gray-700/60
+                       hover:bg-white/40 dark:hover:bg-gray-700/60
                        
                        transition-all ${
                          isCollapsed ? "justify-center" : "w-full"
                        } ${
-              isActive ? "bg-amber-200 dark:bg-gray-500" : "dark:text-gray-100"
+              isActive ? "bg-white/20 dark:bg-gray-500" : "dark:text-gray-100"
             }`}
             title={isCollapsed ? item.content : ""}
           >

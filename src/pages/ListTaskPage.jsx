@@ -5,6 +5,7 @@ import { CirclePlus,Trash } from "lucide-react";
 import { fetchTasks, fetchTaskbyId,deleteTask } from "../features/taskSlice";
 import TaskModal from "../components/TaskModal";
 import TaskCreateEditModal from "../components/TaskCreateEditModal";
+import _ from "lodash";
 
 
 const getStatusColor = (status) => {
@@ -50,32 +51,32 @@ export default function ListTaskPage() {
   }, [dispatch]);
 
   const filteredAndSortedTasks = useCallback(() => {
-    let filtered = tasks.filter((t) => {
+    let filtered = _.filter(tasks, (t) => {
       const matchStatus = filterStatus === "All" || t.status === filterStatus;
       const matchPriority = filterPriority === "All" || t.priority === filterPriority;
       const matchSearch =
-        t.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        t.description?.toLowerCase().includes(searchTerm.toLowerCase());
+        _.includes(_.toLower(t.name), _.toLower(searchTerm)) ||
+        _.includes(_.toLower(t.description || ""), _.toLower(searchTerm));
       return matchStatus && matchPriority && matchSearch;
     });
 
     switch (sortBy) {
       case "date-desc":
-        filtered.sort((a, b) => new Date(b.startTime || 0) - new Date(a.startTime || 0));
+       filtered = _.orderBy(filtered, [(t) => new Date(t.startTime || 0)], ['desc']);
         break;
       case "date-asc":
-        filtered.sort((a, b) => new Date(a.startTime || 0) - new Date(b.startTime || 0));
+        filtered = _.orderBy(filtered, [(t) => new Date(t.startTime || 0)], ['asc']);
         break;
       case "priority":
         const priorityOrder = { High: 0, Medium: 1, Low: 2 };
-        filtered.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
+        filtered = _.orderBy(filtered, [(t) => priorityOrder[t.priority]], ['asc']);
         break;
       case "name":
-        filtered.sort((a, b) => a.name.localeCompare(b.name));
+        filtered = _.orderBy(filtered, [(t) => t.name.toLowerCase()], ['asc']);
         break;
       case "status":
         const statusOrder = { Todo: 0, InProgress: 1, Review: 2, Done: 3 };
-        filtered.sort((a, b) => statusOrder[a.status] - statusOrder[b.status]);
+        filtered = _.orderBy(filtered, [(t) => statusOrder[t.status]], ['asc']);
         break;
       default:
         break;
@@ -235,7 +236,7 @@ export default function ListTaskPage() {
                 </tr>
               </thead>
               <tbody>
-                {allFilteredTasks.map((t) => (
+                {_.map(allFilteredTasks, (t) => (
                   <tr
                     key={t.id}
                     onClick={() => handleTaskClick(t.id)}

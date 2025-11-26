@@ -32,7 +32,7 @@ export default function ThemeToggle() {
 
   return (
     <button
-      className="px-2 w-10 h-10 flex items-center justify-center bg-amber-200 cursor-pointer dark:bg-gray-700 text-black dark:text-white rounded-full transition-colors duration-200 hover:bg-amber-300 dark:hover:bg-gray-500"
+      className="px-2 w-10 h-10 flex items-center justify-center bg-white cursor-pointer dark:bg-gray-700 text-black dark:text-white rounded-full transition-colors duration-200 hover:bg-white/30 dark:hover:bg-gray-500"
       onClick={handleToggle}
       title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
     >

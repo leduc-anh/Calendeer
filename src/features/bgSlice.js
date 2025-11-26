@@ -88,7 +88,6 @@ const bgSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    // Fetch Unsplash Images
     builder
       .addCase(fetchUnsplashImages.pending, (state) => {
         state.loading = true;
